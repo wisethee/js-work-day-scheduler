@@ -53,3 +53,38 @@ const init = () => {
 
   renderTasks();
 };
+
+// Callback function for click save button
+const clickHandler = (event) => {
+  event.preventDefault();
+  event.stopImmediatePropagation();
+
+  const className = $(event.target).attr("class");
+
+  const eventObject = {
+    taskTime: className,
+    taskText: $("textarea." + className).val(),
+  };
+
+  if (storedTasks.length > 0) {
+    $.each(storedTasks, (index, record) => {
+      if (record.taskTime === event.target.className) {
+        storedTasks.splice($.inArray(record, storedTasks), 1);
+      }
+    });
+  }
+
+  storedTasks.push(eventObject);
+
+  $.each(storedTasks, (index, record) => {
+    if (record.taskText === "") {
+      storedTasks.splice($.inArray(record, storedTasks), 1);
+    }
+  });
+
+  storeTasks();
+  renderTasks();
+};
+
+// Button event listener
+$("button").on("click", clickHandler);
