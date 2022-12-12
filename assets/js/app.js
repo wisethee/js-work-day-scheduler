@@ -32,3 +32,14 @@ $(".save-task").each((index, record) => {
 const storeTasks = () => {
   localStorage.setItem("storedTasks", JSON.stringify(storedTasks));
 };
+
+// Reset text area and store task
+const renderTasks = () => {
+  $("textarea").each((index, record) => {
+    record.value = "";
+  });
+
+  $.each(storedTasks, (index, record) => {
+    $("textarea." + record.taskTime).value = record.taskText;
+  });
+};
