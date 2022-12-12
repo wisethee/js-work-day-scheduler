@@ -27,3 +27,8 @@ $(".save-task").each((index, record) => {
     $(record).addClass("future");
   }
 });
+
+// Function to store tasks in the local storage api
+const storeTasks = () => {
+  localStorage.setItem("storedTasks", JSON.stringify(storedTasks));
+};
