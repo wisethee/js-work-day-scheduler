@@ -43,3 +43,13 @@ const renderTasks = () => {
     $("textarea." + record.taskTime).value = record.taskText;
   });
 };
+
+// Initialize workspace and render tasks if any in the local storage
+const init = () => {
+  var userEvent = JSON.parse(localStorage.getItem("storedTasks"));
+  if (userEvent !== null) {
+    storedTasks = userEvent;
+  }
+
+  renderTasks();
+};
