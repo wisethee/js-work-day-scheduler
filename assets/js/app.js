@@ -40,7 +40,7 @@ const renderTasks = () => {
   });
 
   $.each(storedTasks, (index, record) => {
-    $("textarea." + record.taskTime).value = record.taskText;
+    $("textarea." + record.taskTime)[0].value = record.taskText;
   });
 };
 
@@ -86,6 +86,7 @@ const clickHandler = (event) => {
   renderTasks();
 };
 
+// After DOM content is loaded read localStorage and add button listener
 document.addEventListener("DOMContentLoaded", () => {
   // Init workspace
   init();
