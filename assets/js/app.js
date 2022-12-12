@@ -86,5 +86,10 @@ const clickHandler = (event) => {
   renderTasks();
 };
 
-// Button event listener
-$("button").on("click", clickHandler);
+document.addEventListener("DOMContentLoaded", () => {
+  // Init workspace
+  init();
+
+  // Button event listener
+  $("button").on("click", clickHandler);
+});
