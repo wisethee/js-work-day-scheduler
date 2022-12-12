@@ -89,6 +89,7 @@ textarea {
   min-width: 78px;
   max-height: 78px;
   border-radius: 0 6px 6px 0;
+  background-color: #fafafa;
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
