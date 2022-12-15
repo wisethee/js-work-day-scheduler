@@ -17,17 +17,6 @@ $(".task-block").each((index, record) => {
   }
 });
 
-// Add appropriate css class to save task based on the current time
-$(".save-task").each((index, record) => {
-  if (parseInt(currentHour) === parseInt(record.id.split("-")[1])) {
-    $(record).addClass("present");
-  } else if (parseInt(currentHour) > parseInt(record.id.split("-")[1])) {
-    $(record).addClass("past");
-  } else {
-    $(record).addClass("future");
-  }
-});
-
 // Function to store tasks in the local storage api
 const storeTasks = () => {
   localStorage.setItem("storedTasks", JSON.stringify(storedTasks));
@@ -68,6 +57,10 @@ const clickHandler = (event) => {
 
   if (storedTasks.length > 0) {
     $.each(storedTasks, (index, record) => {
+      if (!record) {
+        return;
+      }
+
       if (record.taskTime === event.target.className) {
         storedTasks.splice($.inArray(record, storedTasks), 1);
       }
