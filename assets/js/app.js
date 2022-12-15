@@ -7,13 +7,13 @@ let storedTasks = [];
 $("#currentDay").text(currentDay);
 
 // Add appropriate css class to task block based on the current time
-$(".task-block").each(() => {
-  if (parseInt(currentHour) === parseInt(this.id)) {
-    $(this).addClass("present");
-  } else if (parseInt(currentHour) > parseInt(this.id)) {
-    $(this).addClass("past");
+$(".task-input").each((index, current) => {
+  if (parseInt(currentHour) === parseInt(current.id)) {
+    $(current).addClass("present");
+  } else if (parseInt(currentHour) > parseInt(current.id)) {
+    $(current).addClass("past");
   } else {
-    $(this).addClass("future");
+    $(current).addClass("future");
   }
 });
 
